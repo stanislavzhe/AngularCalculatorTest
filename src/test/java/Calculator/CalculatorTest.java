@@ -1,6 +1,5 @@
 package Calculator;
 
-import Calculator.data.Operator;
 import Calculator.data.ValuesForCalculateDataProvider;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -18,7 +17,7 @@ public class CalculatorTest extends BaseTest {
     public void NewTest(String firstValue, String operator, String secondValue, String expectedResult) {
         BasePage basePage = new BasePage(driver);
         basePage.typeFirstValue(firstValue);
-        basePage.changeOperatoTo(operator);
+        basePage.changeOperatorTo(operator);
         basePage.typeSecondValue(secondValue);
         basePage.clickOnGoButton();
 
@@ -26,6 +25,7 @@ public class CalculatorTest extends BaseTest {
         wait.until(ExpectedConditions.not(ExpectedConditions.
                 textToBePresentInElement(By.cssSelector("h2.ng-binding"), ".")));
         String actualResult = basePage.getResultFiledValue();
+
         Assert.assertEquals(expectedResult, actualResult);
     }
 }

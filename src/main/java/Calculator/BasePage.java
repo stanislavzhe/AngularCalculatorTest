@@ -1,5 +1,6 @@
 package Calculator;
 
+import Calculator.utils.Log;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -51,23 +52,28 @@ public class BasePage {
     }
 
     public void typeFirstValue(String value) {
+        Log.LOG.info("Typing first value: " + value);
         firstInputValue.sendKeys(value);
     }
 
-    public void changeOperatoTo(String elementValue) {
+    public void changeOperatorTo(String elementValue) {
+        Log.LOG.info("Setting operator to: " + elementValue);
         Select operatorValue = new Select(operator);
         operatorValue.selectByVisibleText(elementValue);
     }
 
     public void typeSecondValue(String value) {
+        Log.LOG.info("Typing second value: " + value);
         secondInputValue.sendKeys(value);
     }
 
     public void clickOnGoButton() {
+        Log.LOG.info("Clicking on go button");
         goButton.click();
     }
 
     public String getResultFiledValue() {
+        Log.LOG.info("Getting result: " + resultField.getText());
         return resultField.getText();
     }
 }
