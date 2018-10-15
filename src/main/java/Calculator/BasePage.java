@@ -39,47 +39,37 @@ public class BasePage {
     private WebElement tableTitles;
 
     @FindBy(xpath = "//*[@ng-repeat='result in memory' and @class='ng-scope']")
-    private List <WebElement> tableList;
+    private List<WebElement> tableList;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return pageTitle.getText();
     }
 
-    public void typeFirstValue(String value){
+    public void typeFirstValue(String value) {
         firstInputValue.sendKeys(value);
     }
 
-    public void changeOperatoTo(String elementValue){
+    public void changeOperatoTo(String elementValue) {
         Select operatorValue = new Select(operator);
         operatorValue.selectByVisibleText(elementValue);
     }
 
-    public void typeSecondValue(String value){
+    public void typeSecondValue(String value) {
         secondInputValue.sendKeys(value);
     }
 
-    public void clickOnGoButton(){
+    public void clickOnGoButton() {
         goButton.click();
     }
 
-    public String getResultFiledValue(){
+    public String getResultFiledValue() {
         return resultField.getText();
     }
-
 }
 
-//enum Operators{
-//    ADDITION("+"),
-//    DIVISION("-");
-//
-//    private String description;
-//
-//    private Operators(String description) {
-//        this.description = description;
-//    }
-//}
+

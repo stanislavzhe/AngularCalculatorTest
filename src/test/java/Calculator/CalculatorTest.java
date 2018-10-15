@@ -1,31 +1,31 @@
 package Calculator;
 
+import Calculator.data.Operator;
+import Calculator.data.ValuesForCalculateDataProvider;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
  * Created by Stas on 13.10.2018.
  */
-public class CalculatorTest extends BaseTest{
+public class CalculatorTest extends BaseTest {
 
-    @Test
-    public void NewTest() throws InterruptedException {
+
+    @Test(dataProvider = "valuesForCalculate", dataProviderClass = ValuesForCalculateDataProvider.class)
+    public void NewTest(String firstValue, String operator, String secondValue, String expectedResult) {
         BasePage basePage = new BasePage(driver);
-        basePage.typeFirstValue("123");
-        basePage.changeOperatoTo("-");
-        basePage.typeSecondValue("321");
+        basePage.typeFirstValue(firstValue);
+        basePage.changeOperatoTo(operator);
+        basePage.typeSecondValue(secondValue);
         basePage.clickOnGoButton();
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
-
-//        WebElement element = wait.until(ExpectedConditions.
-//                not(ExpectedConditions.titleContains(".")));
-
-        Thread.sleep(5000);
-        System.out.println(basePage.getResultFiledValue());
-
+        wait.until(ExpectedConditions.not(ExpectedConditions.
+                textToBePresentInElement(By.cssSelector("h2.ng-binding"), ".")));
+        String actualResult = basePage.getResultFiledValue();
+        Assert.assertEquals(expectedResult, actualResult);
     }
 }
