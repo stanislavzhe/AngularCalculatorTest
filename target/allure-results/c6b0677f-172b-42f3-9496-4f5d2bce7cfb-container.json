@@ -1,0 +1,1 @@
+{"uuid":"c6b0677f-172b-42f3-9496-4f5d2bce7cfb","name":"Calculator.BaseTest.closeDown","description":"","start":1539706477320,"stop":1539706479395,"children":["c6d1db9d-16a6-4d5a-be78-b2e8fdb4f4e4"],"afters":[{"name":"closeDown","status":"passed","stage":"finished","description":"","start":1539706477320,"stop":1539706479395}]}
