@@ -12,7 +12,6 @@ import org.testng.annotations.Test;
  */
 public class CalculatorTest extends BaseTest {
 
-
     @Test(dataProvider = "valuesForCalculate", dataProviderClass = ValuesForCalculateDataProvider.class)
     public void NewTest(String firstValue, String operator, String secondValue, String expectedResult) {
         BasePage basePage = new BasePage(driver);

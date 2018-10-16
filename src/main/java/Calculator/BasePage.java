@@ -1,6 +1,7 @@
 package Calculator;
 
 import Calculator.utils.Log;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -51,27 +52,32 @@ public class BasePage {
         return pageTitle.getText();
     }
 
+    @Step
     public void typeFirstValue(String value) {
         Log.LOG.info("Typing first value: " + value);
         firstInputValue.sendKeys(value);
     }
 
+    @Step
     public void changeOperatorTo(String elementValue) {
         Log.LOG.info("Setting operator to: " + elementValue);
         Select operatorValue = new Select(operator);
         operatorValue.selectByVisibleText(elementValue);
     }
 
+    @Step
     public void typeSecondValue(String value) {
         Log.LOG.info("Typing second value: " + value);
         secondInputValue.sendKeys(value);
     }
 
+    @Step
     public void clickOnGoButton() {
         Log.LOG.info("Clicking on go button");
         goButton.click();
     }
 
+    @Step
     public String getResultFiledValue() {
         Log.LOG.info("Getting result: " + resultField.getText());
         return resultField.getText();
